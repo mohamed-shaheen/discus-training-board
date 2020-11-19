@@ -10,10 +10,9 @@
        <body>
        {%block body%}
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <form class="form-inline" action="#">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-success" type="submit">Search</button>
-  </form>
+                {%block search%}  
+
+                {%endblock search%} 
   <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">Training Boards</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">

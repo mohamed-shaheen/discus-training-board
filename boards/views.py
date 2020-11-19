@@ -10,7 +10,7 @@ from django.views.generic import UpdateView, ListView
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
+from .filters import TopicFilter
 # Create your views here.
 
 class BoardListView(ListView):
@@ -25,6 +25,8 @@ def board_topics(request,board_id):
     board = get_object_or_404(Board,pk=board_id)
     queryset = board.topics.order_by('-created_dt').annotate(comments=Count('posts'))
     page = request.GET.get('page',1)
+    myfilter = TopicFilter(request.GET, queryset=queryset)
+    queryset= myfilter.qs
     paginator = Paginator(queryset,20)
     try:
         topics = paginator.page(page)
@@ -33,7 +35,7 @@ def board_topics(request,board_id):
     except EmptyPage:
         topics = paginator.page(paginator.num_pages)
 
-    return render(request,'topics.html',{'board':board,'topics':topics})    
+    return render(request,'topics.html',{'board':board,'topics':topics, 'myfilter':myfilter})    
 
 @login_required
 def new_topic(request, board_id):
@@ -104,3 +106,7 @@ class PostUpdateViews(UpdateView):
         post.updated_dt = timezone.now()
         post.save()     
         return redirect('topic_posts',board_id=post.topic.board.pk, topic_id = post.topic.pk)
+
+
+
+

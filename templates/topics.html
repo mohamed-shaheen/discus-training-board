@@ -3,6 +3,12 @@
 {% block title %}
 {{board.name}}
 {% endblock %}
+{%block search%}
+<form class="form-inline" method="GET">
+        {{myfilter.form}}
+   <button class="btn btn-success" type="submit">Search</button>
+ </form>
+{%endblock search%}
 
 {% block  breadcrumb %}
                <li class="breadcrumb-item"><a href="{% url 'home' %}"> Boards</a></li>
