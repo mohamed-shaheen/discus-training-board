@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'boards',
     'accounts',
+    'contact',
     'django_filters',
 ]
 
@@ -129,3 +130,10 @@ STATICFILES_DIRS=[
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL='login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'your_gmail_adress'
+EMAIL_HOST_PASSWORD = 'key'
+EMAIL_USE_TLS = True
+EMAIL_PORT = '587'

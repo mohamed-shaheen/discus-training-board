@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Boards
+{% endblock %}
+{% block  breadcrumb %}
+<li class="breadcrumb-item active"> Boards </li>
+{% endblock breadcrumb %}
+
+
+{% block content %}
+ 
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="pwd">Email address:</label>
+        <input name="email" type="Email" class="form-control" placeholder="Enter Email" >
+      </div>
+      <div class="form-group">
+    <div class="form-group">
+      <label for="email">Subject:</label>
+      <input name="subject" type="Subject" class="form-control" placeholder="Enter your Subject" >
+    </div>
+        <label for="pwd">Message:</label>
+        <textarea name="message" type="Message" class="form-control" placeholder="Enter your Message" rows="3">
+        </textarea>    
+    </div>    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+{% endblock content %}
+
+         </div>
+       </body>
+
+</html>
