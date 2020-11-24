@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'boards',
     'accounts',
     'contact',
+    'rest_framework',
     'django_filters',
 ]
 

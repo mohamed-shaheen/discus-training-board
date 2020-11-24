@@ -20,4 +20,5 @@ urlpatterns = [
     path('',include('boards.urls')),
     path('',include('accounts.urls')),
     path('',include('contact.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ]
