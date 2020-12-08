@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.utils.text import Truncator 
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 
@@ -34,7 +35,7 @@ class Topic(models.Model):
 
 
 class Post(models.Model):
-    message = models.TextField(max_length = 4000)
+    message = RichTextField()
     topic = models.ForeignKey(Topic, related_name= 'posts', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, related_name= 'posts', on_delete=models.CASCADE)
     created_dt = models.DateTimeField(auto_now_add=True)
