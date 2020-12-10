@@ -11,8 +11,9 @@ Edit post
  {% endblock breadcrumb %}
  
             {% block content %}
-            <form method="post" novalidate class="mb-4" >
+            <form method="post" novalidate class="mb-4" enctype="multipart/form-data">
                  {% csrf_token %}
+                 {{form.media}}
                  {% include  'includes/form.html' %}
                  {% if post.created_by == user %}
                  <button type="submit" class="btn btn-success">Save changes</button>

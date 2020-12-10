@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'ckeditor',
+    'ckeditor_uploader',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,6 +130,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static'),
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/') ,
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'

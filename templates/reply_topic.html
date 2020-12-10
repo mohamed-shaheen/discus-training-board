@@ -12,8 +12,9 @@
  {% endblock breadcrumb %}
  
 {% block content %}
-<form method="post" class="mb-4">
+<form method="post" class="mb-4" enctype="multipart/form-data">
   {% csrf_token %}
+  {{form.media}}
   {% include 'includes/form.html' %}
   <button type="submit" class="btn btn-success">Post the reply</button>
 </form>
@@ -31,7 +32,7 @@
             {{ post.message | safe}}    
             {% if post.created_by == user %}
               <div class="mt-3">
-                <a href="#" class="btn btn-primary btn-sm" role="button">Edit</a>
+                <a href="{% url 'edit_post' post.topic.board.pk  post.topic.pk  post.pk  %}" class="btn btn-primary btn-sm" role="button">Edit</a>
               </div>
             {% endif %} 
            </div>
