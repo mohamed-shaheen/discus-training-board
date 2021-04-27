@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .filters import TopicFilter
+from el_pagination.views import AjaxListView
 # Create your views here.
 
 class BoardListView(ListView):
@@ -19,6 +20,21 @@ class BoardListView(ListView):
     template_name = 'home.html' 
 
 
+class TopicsListView(AjaxListView):
+    context_object_name = "topics"
+    template_name = "topics_pagi.html"
+    page_template='topics_list_page.html'
+
+    def get_queryset(self):
+        topics = Topic.objects.all()
+        return topics
+
+#def topic_bagi(request):
+#    topics = Topic.objects.all()
+#
+#    context = {'topics':topics}
+#
+#    return render(request, 'topics_pagi.html', context)
 
 def board_topics(request,board_id):
 

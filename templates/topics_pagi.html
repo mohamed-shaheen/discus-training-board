@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{board.name}}
+{% endblock %}
+{%block search%}
+<form class="form-inline" method="GET">
+        {{myfilter.form}}
+   <button class="btn btn-success" type="submit">Search</button>
+ </form>
+{%endblock search%}
+
+{% block  breadcrumb %}
+               <li class="breadcrumb-item"><a href="{% url 'home' %}"> Boards</a></li>
+               <li class="breadcrumb-item active">{{board.name}}</li>
+ {% endblock breadcrumb %}
+ 
+          {% block content %}
+            <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                         <th>Topic</th>
+                         <th>Created by</th>
+                         <th>Posts</th>
+                         <th>Views</th>
+                         <th>Created at</th>
+                    </tr>
+                    </thead>
+                    <tbody class="endless_content_wrapper">
+                        {% include page_template %}
+                    </tbody>  
+            </table>
+          {% endblock content %}
+         </div>
+         {%block javascript %}
+         {{ block.super }}
+         <script src="http://code.jquery.com/jquery-latest.js"></script>
+         <script src="{%static 'js/el-pagination.js'%}"></script>
+         <script>
+            $.endlessPaginate({
+                paginateOnScroll: true,
+                paginateOnScrollChunkSize: 5,
+                contentSelector: '.endless_content_wrapper'
+            });
+        </script>
+        </script>
+         {%endblock javascript %}

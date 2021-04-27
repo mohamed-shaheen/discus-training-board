@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}<!doctype html>
 <html lang="en">
        <head>
               <meta charset="UTF-8">
@@ -64,8 +64,11 @@
     </footer>
 
        <script src="{%static 'js/jquery-3.5.1.min.js'%}"></script>
+       <script src="{%static 'js/querys.js'%}"></script>
        <script src="{%static 'js/popper.min.js'%}"></script>
        <script src="{%static 'js/bootstrap.min.js'%}"></script>
+       {%block javascript %}
+       {%endblock javascript %}
        </body>
 
 </html>            

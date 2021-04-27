@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView
 from .forms import SignUpForm
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 # Create your views here.
 
 def signup(request):
@@ -30,3 +31,12 @@ class UserUpdateView(UpdateView):
     def get_object(self):
         return self.request.user
 
+
+
+def validate_username(request): 
+    username = request.GET.get('username')
+    is_taken = User.objects.filter(username__iexact=username).exists()
+    data = {'is_taken':is_taken}
+    if data['is_taken']: 
+        data['error_message'] = "The username already taken"
+    return JsonResponse(data)

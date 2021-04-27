@@ -10,6 +10,7 @@ urlpatterns = [
     path('boards/<int:board_id>/topics/<int:topic_id>/',views.topic_posts,name='topic_posts'),
     path('boards/<int:board_id>/topics/<int:topic_id>/reply/', views.reply_topic, name='reply_topic'),
     path('boards/<int:board_id>/topics/<int:topic_id>/posts/<int:post_id>/edit/',views.PostUpdateViews.as_view(),name= 'edit_post'),
+    path('all_topics/bagi/', views.TopicsListView.as_view(), name='topics_bagi'),
     
     
     path('api/list/',api.board_list_api, name='boardlistapi'),
